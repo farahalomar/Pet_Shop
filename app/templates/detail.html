@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+     {% block title %}
+    Details
+
+    {% endblock title %}
+    {% block content %}
+
+    <div class="jumbotron bg-light text-dark">
+    <h5><span class="badge btn btn-block">Pet name: </h5>
+    <h5> {{pet.name}}</h5>
+    <br>
+    <h5><span class="badge btn btn-block">Pet age: </h5>
+    <h5>{{pet.age}} years old</h5>
+    <br>
+    <h5><span class="badge btn btn-block">Pet available: </h5>
+    <h5>{% if pet.available %}Available{% else %}Unvailable{% endif %}</h5>
+    <br>
+    <h5><span class="badge btn btn-block">Pet image: </h5>
+    <img src="{{pet.image.url}}" style="width: 18rem;">
+    <br>
+    <h5><span class="badge btn btn-block">Pet price: </h5>
+    <h5>{{pet.price}} KD</h5>
+      <br>
+         {%if request.user.is_authenticated %}
+
+            <a href="{% url 'pet-update' pet.id %}" class="btn btn-success btn-block">Update</button></a>
+            <br>
+        
+            <a href="{% url 'pet-delete' pet.id %}" class="btn btn-danger btn-block">Delete</button></a>
+            {%endif%}
+</div>
+    {% endblock content %}

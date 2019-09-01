@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+   {% block title %}
+  Update Page
+
+    {% endblock title %}
+
+{% block content %}
+<div class="jumbotron bg-light" >
+    <form action="{% url 'pet-update' pet.id %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form|crispy}}
+  <input type="submit" value="Update" class="btn btn-outline-primary">
+    </form>
+  </div>
+{% endblock content %}

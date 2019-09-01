@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+   {% block title %}
+  Create Page
+
+    {% endblock title %}
+{% block content %}
+<br>
+<div class="card">
+  <h5 class="card-header">New Pet</h5>
+
+
+  <div class="jumbotron bg-light ">
+    <form action="{% url 'pet-create' %}" method="POST" enctype="multipart/form-data">
+      {% csrf_token %}
+    {{form|crispy}}
+
+      <input type="submit" value="Add" class="btn btn-outline-primary">
+    </form>
+
+  </div>
+{% endblock content %}
